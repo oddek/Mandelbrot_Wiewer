@@ -1,6 +1,6 @@
 # Mandelbrot wiewer
 
-![](ex2.png)
+![](screenshots/ex2.png)
 
 Developed with SFML.
 
@@ -13,8 +13,8 @@ By clicking a point, you set the center coordinates, where the zoom will center.
 Press S to save current image to .png.
 
 
-![](ex1.png)
-![](ex3.png)
-![](ex4.png)
+![](screenshots/ex1.png)
+![](screenshots/ex3.png)
+![](screenshots/ex4.png)
 
 Kent Odde, May 2019
