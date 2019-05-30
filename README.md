@@ -15,7 +15,7 @@ Press S to save current image to .png.
 
 Kent Odde, May 2019
 
-### More screenshots:
+##### More screenshots:
 ![](screenshots/ex1.png)
 ![](screenshots/ex3.png)
 ![](screenshots/ex4.png)
