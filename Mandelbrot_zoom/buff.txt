@@ -1,0 +1,101 @@
+#include "Mandelbrot.h"
+
+int s_width = GetSystemMetrics(SM_CYSCREEN);
+int s_height = GetSystemMetrics(SM_CYSCREEN);
+
+int main()
+{
+	Mandelbrot* m = new Mandelbrot(s_width, s_height-50);
+	sf::Image img;
+	img.create(m->width, m->height);
+	m->update_img(&img, 0);
+
+	sf::RenderWindow window(sf::VideoMode(s_width, s_height), "Mandelbrot");
+	window.setKeyRepeatEnabled(false);
+	
+	
+	sf::Texture texture;
+	texture.loadFromImage(img);
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
+
+
+
+
+	sf::Font font;
+	if (!font.loadFromFile("arial.ttf")) return 1;
+
+	sf::Text text;
+	text.setString("TEST!");
+	text.setCharacterSize(1000);
+	text.setStyle(sf::Text::Bold);
+	text.setFillColor(sf::Color::Red);
+	
+	sf::Sprite sprite2;
+
+	sf::RenderTexture ren;
+	
+	ren.create(1400, 1400);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+				case sf::Event::Closed:
+					window.close();
+					break;
+
+					
+				case sf::Event::MouseWheelScrolled:
+					if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
+						cout << "Zoom pending.." << endl;
+						m->update_img(&img, event.mouseWheelScroll.delta);
+						texture.update(img);
+						cout << "Ready!" << endl;
+					break;
+				case sf::Event::MouseButtonPressed:
+					if (event.mouseButton.button == sf::Mouse::Left)
+					{
+						m->set_center(event.mouseButton.x, event.mouseButton.y);
+					}
+					break;
+				case sf::Event::KeyPressed:
+					if(event.key.code == sf::Keyboard::S)
+						if(img.saveToFile("img.png")) cout << "Image saved as: img.png" << endl;
+					if (event.key.code == sf::Keyboard::Up)
+					{
+						cout << "Zoom pending.." << endl;
+						m->update_img(&img, 1);
+						texture.update(img);
+						cout << "Ready!" << endl;
+					}
+					if (event.key.code == sf::Keyboard::Down)
+					{
+						cout << "Zoom pending.." << endl;
+						m->update_img(&img, -1);
+						texture.update(img);
+						cout << "Ready!" << endl;
+					}
+				default:
+					break;
+			}
+		}
+	
+		window.clear();
+
+		window.draw(sprite);
+		//window.draw(text);
+		ren.draw(sprite);
+		ren.draw(text);
+		ren.display();
+		window.display();
+	}
+	return 0;
+
+}
+
+

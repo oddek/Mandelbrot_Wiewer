@@ -1,0 +1,8 @@
+Legg til manuell min-max x og y.
+
+Legg til nullstill/reset
+
+Legg til funksjon for å forskyve bildet uten zoom
+
+Legg inn mulighet for manuell zoom_inc?
+
