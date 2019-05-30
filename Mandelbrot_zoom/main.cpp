@@ -8,8 +8,12 @@ int main()
 {
 	Mandelbrot* m = new Mandelbrot(s_width, s_height);
 
+	sf::Image icon;
+	icon.loadFromFile("../screenshots/ex2.png");
+
 	//Vindu
 	sf::RenderWindow window(sf::VideoMode(s_width, s_height), "Mandelbrot");
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	window.setKeyRepeatEnabled(false);
 	//Mandelbrot bilde
 	sf::Image img;
