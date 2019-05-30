@@ -1,4 +1,4 @@
-# Mandelbrot wiewer
+# Mandelbrot viewer
 
 ![](screenshots/ex2.png)
 
